@@ -1,0 +1,46 @@
+-- Create the 'brands' table
+CREATE TABLE brands (
+    brand_id INT PRIMARY KEY,
+    brand_name VARCHAR(50) NOT NULL
+);
+
+-- Insert brand data
+INSERT INTO brands (brand_id, brand_name) VALUES
+(1, 'YETI'),
+(2, 'Hydroflask'),
+(3, 'Brumate'),
+(4, 'Stanley'),
+(5, 'Thermoflask');
+
+-- Create the 'colors' table
+CREATE TABLE colors (
+    color_id INT PRIMARY KEY,
+    color_name VARCHAR(20) NOT NULL
+);
+
+-- Insert color data
+INSERT INTO colors (color_id, color_name) VALUES
+(1, 'Pink'),
+(2, 'Red'),
+(3, 'Blue'),
+(4, 'Green'),
+(5, 'Black');
+
+-- Create the 'bottles' table
+CREATE TABLE bottles (
+    bottle_id INT PRIMARY KEY AUTO_INCREMENT,
+    brand_id INT NOT NULL,
+    color_id INT NOT NULL,
+    capacity INT,
+    lid_type VARCHAR(20),
+    FOREIGN KEY (brand_id) REFERENCES brands (brand_id),
+    FOREIGN KEY (color_id) REFERENCES colors (color_id)
+);
+
+-- Insert sample bottle data
+INSERT INTO bottles (brand_id, color_id, capacity, lid_type) VALUES
+(1, 1, 500, 'Screw-on'),
+(2, 2, 750, 'Flip-top'),
+(3, 3, 1000, 'Straw'),
+(4, 4, 500, 'Screw-on'),
+(5, 5, 750, 'Flip-top');
